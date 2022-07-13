@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>include/GwsIf.h</itemPath>
+      <itemPath>include/OmcMib.h</itemPath>
+      <itemPath>include/arn_6h_gws_mib.h</itemPath>
+      <itemPath>include/error_agent.h</itemPath>
+      <itemPath>include/shmem.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>src/GwsIf.cc</itemPath>
+      <itemPath>src/GwsInterface.cc</itemPath>
+      <itemPath>src/OmcMib.cc</itemPath>
+      <itemPath>src/arn_6h_gws_mib.cc</itemPath>
+      <itemPath>src/main.cc</itemPath>
+      <itemPath>src/readconf.cc</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="测试文件"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="重要文件"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU_GWS5000_4_4_14|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+            <pElem>include/des</pElem>
+            <pElem>include/snmp_pp</pElem>
+            <pElem>include/agent_pp</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>libs/libdes.a</linkerLibFileItem>
+            <linkerLibFileItem>libs/libsnmp__.a</linkerLibFileItem>
+            <linkerLibFileItem>libs/libagent__.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-lpthread -lgwsapi</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="include/GwsIf.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OmcMib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/arn_6h_gws_mib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/error_agent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/shmem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/GwsIf.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GwsInterface.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OmcMib.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/arn_6h_gws_mib.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/readconf.cc" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU_GWS5000_4_4_14|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>include</pElem>
+            <pElem>include/des</pElem>
+            <pElem>include/snmp_pp</pElem>
+            <pElem>include/agent_pp</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>libs/libdes.a</linkerLibFileItem>
+            <linkerLibFileItem>libs/libsnmp__.a</linkerLibFileItem>
+            <linkerLibFileItem>libs/libagent__.a</linkerLibFileItem>
+            <linkerLibFileItem>libs/gwsapi.o</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-lpthread -lrt -ldl</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="include/GwsIf.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OmcMib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/arn_6h_gws_mib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/error_agent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/shmem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/GwsIf.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GwsInterface.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OmcMib.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/arn_6h_gws_mib.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cc" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/readconf.cc" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

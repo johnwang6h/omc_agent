@@ -1,0 +1,62 @@
+#!/bin/sh /etc/rc.common
+# 6Harmonics YZ, 2020.02.12
+
+START=83
+STOP=98
+
+CONF_F=/etc/config/gwssnmpd
+CMD_D=/usr/sbin
+RUN_D=/var/run
+STATUS_FILE=/tmp/snmp_status
+
+APP_NAME=snmp
+GWSCONF=/etc/config/gwsconfig.configure
+UNLOCK_FLAG="$APP_NAME"unlock
+RUNNING_FLAG="$APP_NAME"running
+
+gws_snmpd_config() {
+	local conf="$1"
+
+	config_get read_pass "$conf" read_pass
+	[ -n "$read_pass" ] || return 0
+	
+	config_get write_pass "$conf" write_pass
+	[ -n "$write_pass" ] || return 0
+	
+}
+
+start() {
+
+    echo "SNMP is not running" > /tmp/snmp_status	
+    IS_UNLOCK=`uci get $GWSCONF.$UNLOCK_FLAG`
+    if [ $IS_UNLOCK == "1" ];then
+        IS_RUNNING=`uci get $GWSCONF.$RUNNING_FLAG`
+        if [ $IS_RUNNING == "1" ]; then
+            ##### the start service part #####
+            [ -d $RUN_D ] || mkdir -p $RUN_D
+
+        	if [ -f $CONF_F ]; then
+        		config_load $CONF_F
+        		config_foreach gws_snmpd_config gwssnmpd
+        		#echo " * starting gws snmpd"
+        		$CMD_D/gwssnmpd -start 1>/dev/null 2>&1 &
+        	else
+        		echo " *** no config file found"
+        	fi
+        	echo "SNMP is running" > /tmp/snmp_status	
+            ##### the start service part #####
+        else
+            echo "service $APP_NAME is not running previously. Stop start."			
+        fi
+
+    else
+        echo "service $APP_NAME is not unlocked. Stop start."	
+    fi
+}
+
+stop() {
+	
+	echo "SNMP is not running" > /tmp/snmp_status	
+	killall gwssnmpd
+	echo " *** gws snmpd agent terminated"
+}
